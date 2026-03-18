@@ -3,7 +3,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8" />
-<title>質問票</title>
+<title>OSA アンケート</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
 html { font-size: 16px; }
@@ -89,23 +89,28 @@ button{ padding:10px 18px; font-size:1em; border-radius:6px; border:none; cursor
   </div>
 </div>
 <div class="container">
-  <h1>質問票</h1>
+  <h1>OSA アンケート</h1>
   <div class="today-label">本日の日付：<span id="todayDate"></span></div>
   
 <section class="page active" data-page-index="selector" id="formSelectorPage" style="font-size:100%">
   <div class="page-label">質問票選択</div>
-  <h2>質問票</h2>
+  <h2>OSA アンケート</h2>
   <div class="note">回答する質問票を選択してください。</div>
   <div class="form-selector-list">
 
-  <button type="button" class="form-select-btn" data-form-index="0" onclick="window.activateForm(0); return false;">OSA 質問票</button>
+  <button type="button" class="form-select-btn" data-form-index="0" onclick="window.activateForm(0); return false;">質問票2</button>
 
-  <button type="button" class="form-select-btn" data-form-index="1" onclick="window.activateForm(1); return false;">睡眠の質</button>
+  <button type="button" class="form-select-btn" data-form-index="1" onclick="window.activateForm(1); return false;">OSA 質問票</button>
 
   </div>
   <div class="form-selector-note">※質問票を選び間違えた場合は、各ページの「質問票選択に戻る」から戻れます。</div>
 </section>
-<section class="page form-page" data-form-index="0" data-page-index="0" style="font-size:100%"><div class="page-label">ページ 1 / 3</div><h2>OSA 質問票</h2>
+<section class="page form-page" data-form-index="0" data-page-index="0" style="font-size:100%"><div class="page-label">ページ 1 / 1</div><h2>質問票2</h2><div class="top-nav-buttons"><button type="button" class="btn-back back-to-selector" onclick="if(window.backToSelector){window.backToSelector();} return false;">質問票選択に戻る</button></div><div class="nav-buttons"><div class="nav-buttons-left"></div><div class="nav-buttons-right"><button type="button" class="complete-btn">完了する</button></div></div>
+<div class="export-area">
+  <div class="note">※未入力がある場合は完了できません（必須ブロックのみ）。<br/>※完了するとCSVがダウンロードされます。<br/>※CSVはUTF-8（BOM付き）。</div>
+  <div class="errorMessage error-message"></div>
+</div>
+</section><section class="page form-page" data-form-index="1" data-page-index="0" style="font-size:100%"><div class="page-label">ページ 1 / 3</div><h2>OSA 質問票</h2>
 <div class="time-row block-time" data-block-id="time1">
   <div class="time-head">
     <label>① 昨夜、お休みになった時刻
@@ -161,7 +166,7 @@ button{ padding:10px 18px; font-size:1em; border-radius:6px; border:none; cursor
     </select> <span class="unit">分</span>
   </div>
 </div>
-<div class="top-nav-buttons"><button type="button" class="btn-back back-to-selector" onclick="if(window.backToSelector){window.backToSelector();} return false;">質問票選択に戻る</button></div><div class="nav-buttons"><div class="nav-buttons-left"></div><div class="nav-buttons-right"><button type="button" class="btn-next nav-next" data-target-page="1" onclick="if(window.goSurveyPage){window.goSurveyPage(1);} return false;">次へ</button></div></div></section><section class="page form-page" data-form-index="0" data-page-index="1" style="font-size:100%"><div class="page-label">ページ 2 / 3</div><div class="vas-page-helper">「入力を始める」を押してから、横線をまたぐように線を引いてください。</div>
+<div class="top-nav-buttons"><button type="button" class="btn-back back-to-selector" onclick="if(window.backToSelector){window.backToSelector();} return false;">質問票選択に戻る</button></div><div class="nav-buttons"><div class="nav-buttons-left"></div><div class="nav-buttons-right"><button type="button" class="btn-next nav-next" data-target-page="1" onclick="if(window.goSurveyPage){window.goSurveyPage(1);} return false;">次へ</button></div></div></section><section class="page form-page" data-form-index="1" data-page-index="1" style="font-size:100%"><div class="page-label">ページ 2 / 3</div><div class="vas-page-helper">「入力を始める」を押してから、横線をまたぐように線を引いてください。</div>
 <div class="vas-block" data-block-id="vas1">
   <h2>VAS</h2>
   
@@ -177,7 +182,7 @@ button{ padding:10px 18px; font-size:1em; border-radius:6px; border:none; cursor
     <div class="vas-label vas-label-right">何もできないほど疲れ切った<br>最悪の感覚</div>
   </div>
 </div>
-<div class="top-nav-buttons"><button type="button" class="btn-back back-to-selector" onclick="if(window.backToSelector){window.backToSelector();} return false;">質問票選択に戻る</button></div><div class="nav-buttons has-back"><div class="nav-buttons-left"><button type="button" class="btn-back nav-prev" data-target-page="0" onclick="if(window.goSurveyPage){window.goSurveyPage(0);} return false;">戻る</button></div><div class="nav-buttons-right"><button type="button" class="btn-next nav-next" data-target-page="2" onclick="if(window.goSurveyPage){window.goSurveyPage(2);} return false;">次へ</button></div></div></section><section class="page form-page" data-form-index="0" data-page-index="2" style="font-size:100%"><div class="page-label">ページ 3 / 3</div>
+<div class="top-nav-buttons"><button type="button" class="btn-back back-to-selector" onclick="if(window.backToSelector){window.backToSelector();} return false;">質問票選択に戻る</button></div><div class="nav-buttons has-back"><div class="nav-buttons-left"><button type="button" class="btn-back nav-prev" data-target-page="0" onclick="if(window.goSurveyPage){window.goSurveyPage(0);} return false;">戻る</button></div><div class="nav-buttons-right"><button type="button" class="btn-next nav-next" data-target-page="2" onclick="if(window.goSurveyPage){window.goSurveyPage(2);} return false;">次へ</button></div></div></section><section class="page form-page" data-form-index="1" data-page-index="2" style="font-size:100%"><div class="page-label">ページ 3 / 3</div>
 <div class="questionnaire-block" data-block-id="osa1">
   <h2>OSA 質問票</h2>
   
@@ -230,28 +235,6 @@ button{ padding:10px 18px; font-size:1em; border-radius:6px; border:none; cursor
   <div class="note">※未入力がある場合は完了できません（必須ブロックのみ）。<br/>※完了するとCSVがダウンロードされます。<br/>※CSVはUTF-8（BOM付き）。</div>
   <div class="errorMessage error-message"></div>
 </div>
-</section><section class="page form-page" data-form-index="1" data-page-index="0" style="font-size:100%"><div class="page-label">ページ 1 / 1</div><h2>睡眠の質</h2><div class="vas-page-helper">「入力を始める」を押してから、横線をまたぐように線を引いてください。</div>
-<div class="vas-block" data-block-id="vas2">
-  <h2>VAS</h2>
-  <div class="block-desc">あなたが、今、昨晩の睡眠に関して感じている感覚を、直線の左右両端に示した感覚を参考に、
-直線上に線を書いてください</div>
-  <button type="button" class="vas-start-btn">入力を始める</button>
-  <div class="vas-container">
-    <div class="vas-label vas-label-left">これまで経験したことのないような、最悪の睡眠の質<br><br></div>
-    <div class="vas-line-wrapper">
-      <div class="vas-draw-area">
-        <div class="vas-line"><div class="vas-end vas-end-left"></div><div class="vas-end vas-end-right"></div></div>
-        <canvas class="vas-canvas"></canvas>
-      </div>
-    </div>
-    <div class="vas-label vas-label-right">これまで経験したことのないような、最良の睡眠の質<br></div>
-  </div>
-</div>
-<div class="top-nav-buttons"><button type="button" class="btn-back back-to-selector" onclick="if(window.backToSelector){window.backToSelector();} return false;">質問票選択に戻る</button></div><div class="nav-buttons"><div class="nav-buttons-left"></div><div class="nav-buttons-right"><button type="button" class="complete-btn">完了する</button></div></div>
-<div class="export-area">
-  <div class="note">※未入力がある場合は完了できません（必須ブロックのみ）。<br/>※完了するとCSVがダウンロードされます。<br/>※CSVはUTF-8（BOM付き）。</div>
-  <div class="errorMessage error-message"></div>
-</div>
 </section>
 </div>
 <div class="orientation-warning"><div class="orientation-warning-box">
@@ -260,7 +243,7 @@ button{ padding:10px 18px; font-size:1em; border-radius:6px; border:none; cursor
 </div></div>
 
 <script>
-const surveyConfig = {"title":"質問票","htmlFileName":"osa_survey_generated.html","questionsCsvEncoding":"utf-8","selectorFontPercent":100,"deviceCm":{"width":15.2,"height":7.8},"browserRestriction":{"silkOnly":true},"forms":[{"id":"form1","name":"OSA 質問票","csvFileName":"osa_vas.csv","pages":[{"id":"page1","blocks":[{"id":"time1","type":"time","label":"① 昨夜、お休みになった時刻","showApprox":true,"adjustDateOnAm":true,"required":true,"showDescription":false,"description":""},{"id":"time2","type":"time","label":"② 今朝、目覚めた時刻","showApprox":true,"adjustDateOnAm":false,"required":true,"showDescription":false,"description":""},{"id":"duration1","type":"duration","label":"③ 昨夜の睡眠時間","showApprox":true,"required":true,"showDescription":false,"description":""}]},{"id":"page2","blocks":[{"id":"vas1","type":"vas","labelLeft":"疲れを全く感じない\n最良の感覚","labelRight":"何もできないほど疲れ切った\n最悪の感覚","required":true,"showDescription":false,"description":""}]},{"id":"page3","blocks":[{"id":"osa1","type":"questionnaire","title":"OSA 質問票","hasRightLabel":true,"showChoiceMode":"text","required":true,"showDescription":false,"description":"","choices":[{"label":"非常に"},{"label":"やや"},{"label":"やや"},{"label":"非常に"}],"questions":[{"left":"1. 疲れが残っている","right":"疲れが取れている"},{"left":"16. 眠りが浅かった","right":"眠りが深かった"}]}]}]},{"id":"form2","name":"睡眠の質","csvFileName":"VAS.csv","pages":[{"id":"page1","blocks":[{"id":"vas2","type":"vas","labelLeft":"これまで経験したことのないような、最悪の睡眠の質\n\n","labelRight":"これまで経験したことのないような、最良の睡眠の質\n","required":true,"showDescription":true,"description":"あなたが、今、昨晩の睡眠に関して感じている感覚を、直線の左右両端に示した感覚を参考に、\n直線上に線を書いてください"}]}]}]};
+const surveyConfig = {"title":"OSA アンケート","htmlFileName":"osa_survey_generated.html","questionsCsvEncoding":"utf-8","selectorFontPercent":100,"deviceCm":{"width":15.2,"height":7.8},"browserRestriction":{"silkOnly":true},"forms":[{"id":"form2","name":"質問票2","csvFileName":"survey2.csv","pages":[{"id":"page1","blocks":[]}]},{"id":"form1","name":"OSA 質問票","csvFileName":"osa_survey.csv","pages":[{"id":"page1","blocks":[{"id":"time1","type":"time","label":"① 昨夜、お休みになった時刻","showApprox":true,"adjustDateOnAm":true,"required":true,"showDescription":false,"description":""},{"id":"time2","type":"time","label":"② 今朝、目覚めた時刻","showApprox":true,"adjustDateOnAm":false,"required":true,"showDescription":false,"description":""},{"id":"duration1","type":"duration","label":"③ 昨夜の睡眠時間","showApprox":true,"required":true,"showDescription":false,"description":""}]},{"id":"page2","blocks":[{"id":"vas1","type":"vas","labelLeft":"疲れを全く感じない\n最良の感覚","labelRight":"何もできないほど疲れ切った\n最悪の感覚","required":true,"showDescription":false,"description":""}]},{"id":"page3","blocks":[{"id":"osa1","type":"questionnaire","title":"OSA 質問票","hasRightLabel":true,"showChoiceMode":"text","required":true,"showDescription":false,"description":"","choices":[{"label":"非常に"},{"label":"やや"},{"label":"やや"},{"label":"非常に"}],"questions":[{"left":"1. 疲れが残っている","right":"疲れが取れている"},{"left":"16. 眠りが浅かった","right":"眠りが深かった"}]}]}]}]};
 const isPreviewMode = false;
 const initialView = null;
 
@@ -913,20 +896,62 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 (function(){
   if (!('serviceWorker' in navigator) || !location.protocol.startsWith('http')) return;
+
+  async function cacheCurrentPage(reg) {
+    await navigator.serviceWorker.ready;
+    const active = reg.active || navigator.serviceWorker.controller;
+    if (!active) return;
+
+    const urls = Array.from(new Set([
+      location.pathname,
+      location.pathname + location.search,
+      './',
+      './sw.js'
+    ]));
+
+    active.postMessage({
+      type: 'CACHE_URLS',
+      urls
+    });
+  }
+
   window.addEventListener('load', async function(){
     try {
       const reg = await navigator.serviceWorker.register('./sw.js', { scope: './' });
+      await reg.update();
+      await cacheCurrentPage(reg);
+
+      window.addEventListener('online', async function(){
+        try {
+          const r = await navigator.serviceWorker.getRegistration();
+          if (r) await r.update();
+        } catch (_) {}
+      });
+
+      document.addEventListener('visibilitychange', async function(){
+        if (document.visibilityState === 'visible') {
+          try {
+            const r = await navigator.serviceWorker.getRegistration();
+            if (r) await r.update();
+          } catch (_) {}
+        }
+      });
+
       const sp = new URL(location.href).searchParams;
       if (sp.get('update') === '1') {
         if (reg.active) reg.active.postMessage({ type: 'CLEAR_CACHE' });
-        setTimeout(() => location.replace(location.pathname), 150);
+        setTimeout(() => location.replace(location.pathname), 300);
       }
+
       window.forceUpdateSurvey = async function(){
         const r = await navigator.serviceWorker.getRegistration();
         if (r && r.active) r.active.postMessage({ type: 'CLEAR_CACHE' });
-        setTimeout(() => location.reload(true), 150);
+        if (r) await r.update();
+        setTimeout(() => location.reload(), 300);
       };
-    } catch (e) {}
+    } catch (e) {
+      console.error('SW register failed:', e);
+    }
   });
 })();
 </script>
