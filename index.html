@@ -11,8 +11,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; b
 body.completed { background:#e8f5e9; }
 .container { max-width: 960px; margin: 0 auto; padding: 24px 16px 40px; background:#fff; }
 section.page { --page-font-scale: 1; }
-h1 { text-align:center; margin-bottom:10px; font-size:1.65em; letter-spacing:.02em; }
-.today-label { text-align:center; font-size:1.35em; font-weight:700; color:#0d47a1; margin-bottom:18px; }
+h1 { text-align:center; margin-bottom:10px; font-size:1.65em; letter-spacing:.02em; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none; touch-action:manipulation; }
+.today-label { text-align:center; font-size:1.35em; font-weight:700; color:#0d47a1; margin-bottom:18px; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none; touch-action:manipulation; }
 .page-label { font-size:.9em; color:#666; text-align:right; margin-bottom:4px; }
 h2 { margin:8px 0; font-size:1.1em; border-left:4px solid #1976d2; padding-left:8px; }
 .page { display:none; }
@@ -125,6 +125,9 @@ button{ padding:10px 18px; font-size:1em; border-radius:6px; border:none; cursor
 .admin-danger{ background:#c62828; color:#fff; box-shadow:none; }
 .admin-success{ background:#2e7d32; color:#fff; box-shadow:none; }
 .admin-trigger-hint{ display:none; }
+.admin-access-row{ display:flex; justify-content:flex-end; margin:0 0 6px; }
+.admin-access-desktop{ display:none; background:#455a64; color:#fff; box-shadow:none; }
+@media (hover:hover) and (pointer:fine){ .admin-access-desktop{ display:inline-flex; align-items:center; } }
 </style>
 </head>
 <body>
@@ -171,6 +174,7 @@ button{ padding:10px 18px; font-size:1em; border-radius:6px; border:none; cursor
   </div>
 </div>
 <div class="container">
+  <div class="admin-access-row"><button type="button" id="adminDesktopBtn" class="admin-access-desktop">管理者</button></div>
   <h1 id="surveyTitleTapTarget">OSA アンケート</h1>
   <div class="today-label" id="todayLabelTapTarget">本日の日付：<span id="todayDate"></span></div>
   
@@ -335,7 +339,7 @@ button{ padding:10px 18px; font-size:1em; border-radius:6px; border:none; cursor
 </div></div>
 
 <script>
-const surveyConfig = {"title":"OSA アンケート","htmlFileName":"osa_survey_generated.html","questionsCsvEncoding":"utf-8","selectorFontPercent":100,"deviceCm":{"width":15.2,"height":7.8},"browserRestriction":{"silkOnly":false},"responseSecurity":{"adminExportOnly":true,"adminPinSalt":"","adminPinHash":""},"forms":[{"id":"form1","name":"起床時","csvFileName":"morning.csv","pages":[{"id":"page1","blocks":[{"id":"time1","type":"time","label":"① 昨夜、お休みになった時刻","showApprox":true,"adjustDateOnAm":true,"required":true,"showDescription":false,"description":""},{"id":"time2","type":"time","label":"② 今朝、目覚めた時刻","showApprox":true,"adjustDateOnAm":false,"required":true,"showDescription":false,"description":""},{"id":"duration1","type":"duration","label":"③ 昨夜の睡眠時間","showApprox":true,"required":true,"showDescription":false,"description":""}]},{"id":"page2","blocks":[{"id":"vas1","type":"vas","labelLeft":"疲れを全く感じない\n最良の感覚","labelRight":"何もできないほど疲れ切った\n最悪の感覚","required":true,"showDescription":false,"description":""}]},{"id":"page3","blocks":[{"id":"osa1","type":"questionnaire","title":"OSA 質問票","hasRightLabel":true,"showChoiceMode":"text","required":true,"showDescription":false,"description":"","choices":[{"label":"非常に"},{"label":"やや"},{"label":"やや"},{"label":"非常に"}],"questions":[{"left":"1. 疲れが残っている","right":"疲れが取れている"},{"left":"16. 眠りが浅かった","right":"眠りが深かった"}]}]}]},{"id":"form2","name":"就寝時","csvFileName":"night.csv","pages":[{"id":"page1","blocks":[{"id":"vas2","type":"vas","labelLeft":"疲れを全く感じない\n最良の感覚","labelRight":"何もできないほど疲れ切った\n最悪の感覚","required":true,"showDescription":false,"description":""}]}]}]};
+const surveyConfig = {"title":"OSA アンケート","htmlFileName":"osa_survey_generated.html","questionsCsvEncoding":"utf-8","selectorFontPercent":100,"deviceCm":{"width":15.2,"height":7.8},"browserRestriction":{"silkOnly":false},"responseSecurity":{"adminExportOnly":true,"adminPinSalt":"","adminPinHash":""},"forms":[{"id":"form1","name":"起床時","csvFileName":"osa_survey.csv","pages":[{"id":"page1","blocks":[{"id":"time1","type":"time","label":"① 昨夜、お休みになった時刻","showApprox":true,"adjustDateOnAm":true,"required":true,"showDescription":false,"description":""},{"id":"time2","type":"time","label":"② 今朝、目覚めた時刻","showApprox":true,"adjustDateOnAm":false,"required":true,"showDescription":false,"description":""},{"id":"duration1","type":"duration","label":"③ 昨夜の睡眠時間","showApprox":true,"required":true,"showDescription":false,"description":""}]},{"id":"page2","blocks":[{"id":"vas1","type":"vas","labelLeft":"疲れを全く感じない\n最良の感覚","labelRight":"何もできないほど疲れ切った\n最悪の感覚","required":true,"showDescription":false,"description":""}]},{"id":"page3","blocks":[{"id":"osa1","type":"questionnaire","title":"OSA 質問票","hasRightLabel":true,"showChoiceMode":"text","required":true,"showDescription":false,"description":"","choices":[{"label":"非常に"},{"label":"やや"},{"label":"やや"},{"label":"非常に"}],"questions":[{"left":"1. 疲れが残っている","right":"疲れが取れている"},{"left":"16. 眠りが浅かった","right":"眠りが深かった"}]}]}]},{"id":"form2","name":"就寝時","csvFileName":"survey2.csv","pages":[{"id":"page1","blocks":[{"id":"vas2","type":"vas","labelLeft":"疲れを全く感じない\n最良の感覚","labelRight":"何もできないほど疲れ切った\n最悪の感覚","required":true,"showDescription":false,"description":""}]}]}]};
 const isPreviewMode = false;
 const initialView = null;
 
@@ -374,13 +378,79 @@ document.addEventListener("DOMContentLoaded", function () {
   if (surveyConfig.responseSecurity.adminExportOnly !== false) surveyConfig.responseSecurity.adminExportOnly = true;
 
   function addTapListener(el, handler){
-    let touch=('ontouchstart' in window)||navigator.maxTouchPoints>0, moved=false, last=0;
-    if(touch){
-      el.addEventListener('touchstart',()=>moved=false,{passive:true});
-      el.addEventListener('touchmove',()=>moved=true,{passive:true});
-      el.addEventListener('touchend',e=>{ if(!moved){ last=Date.now(); handler(e); } });
+    if (!el) return;
+    const usePointer = typeof window.PointerEvent === 'function';
+    let lastTriggerTs = 0;
+    function fire(e){
+      const now = Date.now();
+      if (now - lastTriggerTs < 320) return;
+      lastTriggerTs = now;
+      handler(e);
     }
-    el.addEventListener('click',e=>{ if(Date.now()-last<500) return; handler(e); });
+    if (usePointer) {
+      let activePointerId = null;
+      let moved = false;
+      let startX = 0;
+      let startY = 0;
+      el.addEventListener('pointerdown', function(e){
+        if (e.button != null && e.button !== 0) return;
+        activePointerId = e.pointerId;
+        moved = false;
+        startX = e.clientX;
+        startY = e.clientY;
+      }, { passive: true });
+      el.addEventListener('pointermove', function(e){
+        if (activePointerId !== e.pointerId) return;
+        if (Math.abs(e.clientX - startX) > 8 || Math.abs(e.clientY - startY) > 8) moved = true;
+      }, { passive: true });
+      el.addEventListener('pointerup', function(e){
+        if (activePointerId !== e.pointerId) return;
+        activePointerId = null;
+        if (!moved) fire(e);
+      });
+      el.addEventListener('pointercancel', function(){
+        activePointerId = null;
+        moved = false;
+      });
+    } else {
+      el.addEventListener('click', fire);
+    }
+  }
+
+  function registerLongPressAdminTrigger(el){
+    if (!el || typeof window.PointerEvent !== 'function') return;
+    let timer = null;
+    let activePointerId = null;
+    let startX = 0;
+    let startY = 0;
+    function clearPress(){
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      activePointerId = null;
+    }
+    el.addEventListener('pointerdown', function(e){
+      if (e.button != null && e.button !== 0) return;
+      clearPress();
+      activePointerId = e.pointerId;
+      startX = e.clientX;
+      startY = e.clientY;
+      timer = setTimeout(function(){
+        timer = null;
+        activePointerId = null;
+        openAdminOverlay();
+      }, 1200);
+    }, { passive: true });
+    el.addEventListener('pointermove', function(e){
+      if (activePointerId !== e.pointerId || !timer) return;
+      if (Math.abs(e.clientX - startX) > 10 || Math.abs(e.clientY - startY) > 10) clearPress();
+    }, { passive: true });
+    el.addEventListener('pointerup', clearPress);
+    el.addEventListener('pointercancel', clearPress);
+    el.addEventListener('contextmenu', function(e){
+      if (timer) e.preventDefault();
+    });
   }
 
   function pad2(n){return String(n).padStart(2,'0');}
@@ -1275,14 +1345,23 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       timer = setTimeout(function(){ tapCount = 0; }, 1600);
     });
+    registerLongPressAdminTrigger(el);
   }
 
   registerHiddenAdminTrigger(document.getElementById("surveyTitleTapTarget"));
   registerHiddenAdminTrigger(document.getElementById("todayLabelTapTarget"));
 
+  const adminDesktopBtn = document.getElementById("adminDesktopBtn");
   const adminUnlockBtn = document.getElementById("adminUnlockBtn");
   const adminCloseBtn1 = document.getElementById("adminCloseBtn1");
   const adminCloseBtn2 = document.getElementById("adminCloseBtn2");
+  if (adminDesktopBtn) adminDesktopBtn.addEventListener("click", openAdminOverlay);
+  document.addEventListener("keydown", function(e){
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "A" || e.key === "a")) {
+      e.preventDefault();
+      openAdminOverlay();
+    }
+  });
   if (adminUnlockBtn) adminUnlockBtn.addEventListener("click", tryUnlockAdmin);
   if (adminPinInput) adminPinInput.addEventListener("keydown", function(e){ if (e.key === "Enter") tryUnlockAdmin(); });
   if (adminCloseBtn1) adminCloseBtn1.addEventListener("click", closeAdminOverlay);
